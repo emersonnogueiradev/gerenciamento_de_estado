@@ -1,7 +1,7 @@
 interface AreaProps {
     titulo: string
     sumario?: string
-    children: React.ReactNode
+    children?: React.ReactNode
     cor: 'red' | 'blue' | 'green' | 'yellow' | 'purple'
 }
 
