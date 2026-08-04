@@ -1,0 +1,43 @@
+import Produto  from "@/data/model/Produto";
+import Real from "@/utils/Real";
+import { IconShoppingCartPlus } from "@tabler/icons-react";
+
+import Image from "next/image";
+
+interface ProdutoCardProps {
+    produto: Produto;
+}
+
+
+
+export default function ProdutoCard(props: ProdutoCardProps) {
+    const {produto} = props;
+
+    return(
+        <div className="
+            flex flex-col gap-3  rounded-md overflow-hidden
+            bg-black 
+        "
+
+        >
+            <Image
+                src={produto.imagem}
+                alt={produto.nome}
+                width={200}
+                height={200}
+                className="rounded-md"
+            />
+            <div className="flex justify-between itens-center  px-4 ">
+                <span>{produto.nome}</span>
+                <span className="text-green-400">{Real.format(produto.preco)}</span>
+
+            </div>
+            <p className="px-4 text-sm text-zinc-400">{produto.descricao}</p>
+            <button className=" flex  justify-center gap-2 btn btn-info">
+                <IconShoppingCartPlus /> Adicionar
+            </button>
+        </div>
+
+    )
+
+}
