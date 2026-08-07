@@ -37,6 +37,7 @@ export function CarrinhoProvider(props: any){
         }
         setItens([...itens, {produto, quantidade: 1}])
     }
+
     
     
     return(
