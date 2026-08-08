@@ -33,6 +33,7 @@ export default function ProdutoCard(props: ProdutoCardProps) {
             />
             <div className="flex justify-between itens-center  px-4 ">
                 <span>{produto.nome}</span>
+
                 <span className="text-green-400">{Real.format(produto.preco)}</span>
 
             </div>

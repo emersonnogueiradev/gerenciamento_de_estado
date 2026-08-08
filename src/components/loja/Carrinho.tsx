@@ -8,9 +8,9 @@ import ItemCarrinhoCard from "./ItemCarrinhoCard";
 
 export default function Carrinho() {
 
-    const {itens} = useContext(CarrinhoContext);
+    const {itens, valorTotal} = useContext(CarrinhoContext);
     return (
-        <Area titulo="Carrinho de Compras" cor="green" >
+        <Area titulo="Carrinho de Compras" cor="green" sumario={Real.format(valorTotal)} >
 
             <div className="flex flex-wrap justify-center gap-4">
                 {itens.length === 0 ? <CarrinhoVazio/> : 

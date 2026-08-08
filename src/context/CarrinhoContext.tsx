@@ -1,12 +1,20 @@
 import { createContext, useState } from "react";
 import ItemCarrinho from "@/data/model/itemCarrinho";
 import Produto from "@/data/model/Produto";
+import ItemCarrinhoCard from "@/components/loja/ItemCarrinhoCard";
+
 
 
 interface CarrinhoContextProps {
 
     itens: ItemCarrinho[];
     adicionarItem: (produto: Produto) => void; 
+
+    removerItem: (produto: Produto) => void; 
+
+    valorTotal: number
+
+    
 }
 
 
@@ -38,11 +46,36 @@ export function CarrinhoProvider(props: any){
         setItens([...itens, {produto, quantidade: 1}])
     }
 
+
+
+    function removerItem(produto: Produto){
+
+        const novosItems = itens.map(item => {
+            return item.produto.id === produto.id ? {...item, quantidade: item.quantidade-1} : item
+
+        }).filter(item=>item.quantidade >0 )
+
+
+
+        setItens(novosItems)
+
+    }
+
+
+    function calcularValorTotal(){
+
+
+
+        return itens.reduce((total:number, item: ItemCarrinho)=> {
+            return total +(item.quantidade*item.produto.preco)
+        },0)
+    }
+
     
     
     return(
 
-        <CarrinhoContext.Provider value={{ itens, adicionarItem }}>
+        <CarrinhoContext.Provider value={{ itens, adicionarItem, removerItem, get valorTotal() {return calcularValorTotal()} }}>
             {props.children}
         </CarrinhoContext.Provider>
     )
