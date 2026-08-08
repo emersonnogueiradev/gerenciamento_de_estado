@@ -1,7 +1,6 @@
 import { createContext, useState } from "react";
 import ItemCarrinho from "@/data/model/itemCarrinho";
 import Produto from "@/data/model/Produto";
-import ItemCarrinhoCard from "@/components/loja/ItemCarrinhoCard";
 
 
 
@@ -11,6 +10,7 @@ interface CarrinhoContextProps {
     adicionarItem: (produto: Produto) => void; 
 
     removerItem: (produto: Produto) => void; 
+    limpar: () => void; 
 
     valorTotal: number
 
@@ -71,11 +71,17 @@ export function CarrinhoProvider(props: any){
         },0)
     }
 
+
+    function limpar(){
+        setItens([])
+    }
+
+
     
     
     return(
 
-        <CarrinhoContext.Provider value={{ itens, adicionarItem, removerItem, get valorTotal() {return calcularValorTotal()} }}>
+        <CarrinhoContext.Provider value={{ itens, adicionarItem, removerItem, limpar, get valorTotal() {return calcularValorTotal()} }}>
             {props.children}
         </CarrinhoContext.Provider>
     )
