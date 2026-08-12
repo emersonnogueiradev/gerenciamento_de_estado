@@ -4,6 +4,7 @@ import CarrinhoVazio from "./CarrinhoVazio";
 import CarrinhoContext from "@/context/CarrinhoContext";
 import { useContext } from "react";
 import ItemCarrinhoCard from "./ItemCarrinhoCard";
+import { IconX } from "@tabler/icons-react";
 
 
 export default function Carrinho() {
@@ -11,19 +12,22 @@ export default function Carrinho() {
     const {itens, valorTotal, limpar} = useContext(CarrinhoContext);
     return (
         <Area titulo="Carrinho de Compras" cor="green" sumario={Real.format(valorTotal)} >
-            <div className="flex flex-wrap justify-center gap-4">
-                {itens.length === 0 ? <CarrinhoVazio/> : 
-                
-                itens.map(
-                    (item) => {
-                        return(
-                            <ItemCarrinhoCard key={item.produto.id} item={item} />
-                        )
-                    }   
-                )                     
-            }
+            <div className="flex flex-col items-center gap-5">
 
-            <button className="btn"  onClick={() => limpar()}>LIMPAR</button>
+                <div className="flex  flex-wrap justify-center gap-4">
+                    {itens.length === 0 ? <CarrinhoVazio/> : 
+                    
+                    itens.map(
+                        (item) => {
+                            return(
+                                <ItemCarrinhoCard key={item.produto.id} item={item} />
+                            )
+                        }   
+                    )}
+                </div>
+                {itens.length>0 &&(
+                    <button className="flex gap-2 justify-center btn-danger w-28"  onClick={() => limpar()}><IconX/>LIMPAR</button>
+                )}
             </div>
         </Area>
 
