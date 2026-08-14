@@ -19,7 +19,10 @@ const capitulos: Capitulo[] = [
             { ordem: 11, titulo: 'Algoritmo #04', duracao: 60 * 10, videoUrl: 'https://www.youtube.com/embed/Lf4uZELPBwQ' },
             { ordem: 12, titulo: 'Estrutura de Dados #01', duracao: 60 * 12, videoUrl: 'https://www.youtube.com/embed/2hgT8mMUTBg' },
             { ordem: 13, titulo: 'Estrutura de Dados #02', duracao: 60 * 11, videoUrl: 'https://www.youtube.com/embed/HJN5rX-3SDM' },
-        ]
+        ],
+
+        
+
     },
     {
         id: 1001,
